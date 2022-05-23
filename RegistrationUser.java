@@ -15,6 +15,10 @@ public class RegistrationUser extends AppCompatActivity {
     private EditText userPasswordEditText;
     private EditText userNameEditText;
     private EditText userAddressEditText;
+    private EditText membership_NameEditText;
+    private EditText trainerNumEditText;
+    private EditText membership_joinDateEditText;
+    private EditText membership_countEditText;
 
     private List<User> userList;
 
@@ -27,6 +31,10 @@ public class RegistrationUser extends AppCompatActivity {
         userPasswordEditText = findViewById(R.id.userPasswordInput);
         userNameEditText = findViewById(R.id.userNameInput);
         userAddressEditText = findViewById(R.id.userAddressInput);
+        membership_NameEditText = findViewById(R.id.membership_NameInput);
+        trainerNumEditText = findViewById(R.id.trainerNumInput);
+        membership_joinDateEditText = findViewById(R.id.member_joinDateInput);
+        membership_countEditText = findViewById(R.id.membership_CountInput);
 
         findViewById(R.id.UserInputCancelButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,11 +46,14 @@ public class RegistrationUser extends AppCompatActivity {
         findViewById(R.id.UserInputButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User user = new User(userIDEditText.getText().toString(),userPasswordEditText.getText().toString(),
-                        userNameEditText.getText().toString(),userAddressEditText.getText().toString()); //객체 인스턴스 생성
-                ((MainActivity)MainActivity.context).mUserDao.insert(user); //데이터베이스에 삽입
+                int trainerNum = Integer.parseInt(trainerNumEditText.getText().toString());
+                int membershipCount = Integer.parseInt(membership_countEditText.getText().toString());
 
-                userList =  ((MainActivity)MainActivity.context).mUserDao.getAll();
+                ((MainActivity)MainActivity.context).mUserDBHelper.Insert(userIDEditText.getText().toString(), userPasswordEditText.getText().toString(),
+                        userNameEditText.getText().toString(),userAddressEditText.getText().toString(),membership_NameEditText.getText().toString(),
+                        trainerNum, membership_joinDateEditText.getText().toString(), membershipCount);
+
+                userList = ((MainActivity)MainActivity.context).mUserDBHelper.getUser();
                 ((MainActivity)MainActivity.context).adapter = new UserListAdapter(getApplicationContext(), userList);
                 ((MainActivity)MainActivity.context).listView.setAdapter(((MainActivity)MainActivity.context).adapter);
 

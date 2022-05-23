@@ -20,7 +20,7 @@ public class UserListAdapter extends BaseAdapter {
     @Override
     public int getCount() { //현재 사용자의 개수 반환
         return userList.size();
-    }
+    } //리스트
 
     @Override
     public Object getItem(int i) { return userList.get(i); } //특정 사용자 반환

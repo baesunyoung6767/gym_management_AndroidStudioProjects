@@ -1,4 +1,4 @@
-package com.example.management;
+/* package com.example.management;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -21,5 +21,5 @@ public interface UserDao {
 
     @Delete
     void delete(User user);
-}
+} */
 

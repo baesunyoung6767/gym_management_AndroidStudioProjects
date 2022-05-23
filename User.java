@@ -1,20 +1,55 @@
 package com.example.management;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity
 public class User { //하나의 사용자 정보 저장
-    @PrimaryKey(autoGenerate = true)
-    private int id = 0;
+    //private int id;
     String userID;
     String userPassword;
     String userName;
     String userAddress;
+    String membership_name;
+    int trainer_Num;
+    String member_joinDate;
+    int membership_count;
 
-    public int getId() { return id; }
+    public User() {
 
-    public void setId(int id) { this.id = id; }
+    }
+
+    public String getMembership_name() {
+        return membership_name;
+    }
+
+    public void setMembership_name(String membership_name) {
+        this.membership_name = membership_name;
+    }
+
+    public int getTrainer_Num() {
+        return trainer_Num;
+    }
+
+    public void setTrainer_Num(int trainer_Num) {
+        this.trainer_Num = trainer_Num;
+    }
+
+    public String getMember_joinDate() {
+        return member_joinDate;
+    }
+
+    public void setMember_joinDate(String member_joinDate) {
+        this.member_joinDate = member_joinDate;
+    }
+
+    public int getMembership_count() {
+        return membership_count;
+    }
+
+    public void setMembership_count(int membership_count) {
+        this.membership_count = membership_count;
+    }
+
+    //public int getId() { return id; }
+
+    //public void setId(int id) { this.id = id; }
 
     public String getUserID() {
         return userID;
@@ -48,10 +83,4 @@ public class User { //하나의 사용자 정보 저장
         this.userAddress = userAddress;
     }
 
-    public User(String userID, String userPassword, String userName, String userAddress) {
-        this.userID = userID;
-        this.userPassword = userPassword;
-        this.userName = userName;
-        this.userAddress = userAddress;
-    }
 }
